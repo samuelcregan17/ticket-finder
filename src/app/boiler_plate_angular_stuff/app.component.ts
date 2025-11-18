@@ -2,11 +2,11 @@ import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 
 @Component({
-  selector: 'homepage',
+  selector: 'app-root',
   imports: [RouterOutlet],
-  templateUrl: './homepage.component.html',
+  templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })
-export class Homepage {
-  title = 'ticket finder thingy';
+export class AppComponent {
+  title = 'My personal app';
 }

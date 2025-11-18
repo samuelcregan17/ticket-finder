@@ -1,1 +1,417 @@
 /* You can add global styles to this file, and also import other style files */
+/* ---------------------------
+Simple reset / sensible defaults
+--------------------------- */
+*,
+*::before,
+*::after {
+box-sizing: border-box;
+}
+
+:root{
+/* color palette /
+--bg: #f7f7f8;
+--surface: #ffffff;
+--muted: #6b7280;
+--text: #111827;
+--brand: #2563eb; / blue /
+--brand-600: #1e40af;
+--accent: #10b981; / green */
+--danger: #ef4444;
+
+/* spacing and sizes */
+--gap: 1rem;
+--container-max: 1100px;
+--radius: 8px;
+
+/* typography */
+--sans: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+--mono: ui-monospace, SFMono-Regular, Menlo, Monaco, "Roboto Mono", monospace;
+--base-font: 16px;
+--line-height: 1.6;
+}
+
+html {
+font-size: var(--base-font);
+-webkit-font-smoothing: antialiased;
+-moz-osx-font-smoothing: grayscale;
+background: var(--bg);
+color: var(--text);
+}
+
+body {
+margin: 0;
+font-family: var(--sans);
+line-height: var(--line-height);
+background: var(--bg);
+color: var(--text);
+-webkit-font-feature-settings: "liga" 1;
+}
+
+/* links */
+a {
+color: var(--brand);
+text-decoration: none;
+}
+a:hover { text-decoration: underline; }
+
+/* images */
+img {
+max-width: 100%;
+height: auto;
+display: block;
+border-radius: var(--radius);
+}
+
+/* lists */
+ul, ol { padding-left: 1.25rem; }
+
+/* small text */
+.small { font-size: 0.875rem; color: var(--muted); }
+
+/* ---------------------------
+Layout utilities
+--------------------------- */
+.container {
+width: 100%;
+max-width: var(--container-max);
+margin-left: auto;
+margin-right: auto;
+padding-left: 1rem;
+padding-right: 1rem;
+}
+
+/* simple grid */
+.row {
+display: grid;
+grid-template-columns: 1fr;
+gap: var(--gap);
+}
+@media (min-width: 720px){
+.row.cols-2 { grid-template-columns: repeat(2, 1fr); }
+.row.cols-3 { grid-template-columns: repeat(3, 1fr); }
+.row.cols-4 { grid-template-columns: repeat(4, 1fr); }
+}
+
+/* spacing helpers */
+.mt-0{ margin-top: 0; }
+.mt-1{ margin-top: .5rem; }
+.mt-2{ margin-top: 1rem; }
+.mb-1{ margin-bottom: .5rem; }
+.mb-2{ margin-bottom: 1rem; }
+.p-1{ padding: .5rem; }
+.p-2{ padding: 1rem; }
+
+/* center helpers */
+.center { text-align: center; }
+.flex { display: flex; }
+.items-center { align-items: center; }
+.justify-between { justify-content: space-between; }
+.gap-1 { gap: .5rem; }
+
+/* ---------------------------
+Header / Nav / Footer
+--------------------------- */
+.site-header {
+background: linear-gradient(180deg, rgba(255,255,255,0.6), rgba(255,255,255,0.3));
+border-bottom: 1px solid rgba(16,24,40,0.04);
+backdrop-filter: blur(6px);
+position: sticky;
+top: 0;
+z-index: 40;
+}
+
+.header-inner {
+display: flex;
+align-items: center;
+justify-content: space-between;
+gap: var(--gap);
+padding: .75rem 0;
+}
+
+.site-title {
+font-weight: 700;
+letter-spacing: -0.02em;
+font-size: 1.125rem;
+display: inline-flex;
+align-items: center;
+gap: .5rem;
+}
+.site-title .logo {
+display: inline-block;
+width: 36px;
+height: 36px;
+background: var(--brand);
+border-radius: 8px;
+color: white;
+font-weight: 700;
+font-size: .9rem;
+display: grid;
+place-items: center;
+}
+
+/* nav */
+.nav {
+display: none;
+}
+.nav ul {
+display: flex;
+gap: 1rem;
+list-style: none;
+margin: 0;
+padding: 0;
+}
+.nav a {
+padding: .5rem .75rem;
+border-radius: 6px;
+color: var(--text);
+font-weight: 500;
+}
+.nav a:hover { background: rgba(37,99,235,0.06); color: var(--brand-600); }
+
+/* mobile menu toggle placeholder */
+.mobile-toggle {
+display: inline-flex;
+align-items: center;
+justify-content: center;
+width: 38px;
+height: 38px;
+border-radius: 8px;
+background: transparent;
+border: 1px solid rgba(16,24,40,0.06);
+}
+
+/* show nav on wider screens */
+@media (min-width: 720px) {
+.nav { display: block; }
+.mobile-toggle { display: none; }
+}
+
+/* footer */
+.site-footer {
+padding: 2rem 0;
+font-size: .95rem;
+color: var(--muted);
+border-top: 1px solid rgba(16,24,40,0.04);
+background: transparent;
+}
+
+/* ---------------------------
+Main content + cards
+--------------------------- */
+.main {
+padding: 2rem 0;
+}
+
+.card {
+background: var(--surface);
+border-radius: var(--radius);
+padding: 1rem;
+box-shadow: 0 6px 18px rgba(15,23,42,0.04);
+border: 1px solid rgba(16,24,40,0.03);
+}
+
+/* hero */
+.hero {
+display: grid;
+gap: 1rem;
+align-items: center;
+padding: 2rem 0;
+}
+.hero h1 {
+margin: 0;
+font-size: 2rem;
+line-height: 1.05;
+}
+@media (min-width: 720px){
+.hero { grid-template-columns: 1fr 420px; gap: 2rem; }
+.hero h1 { font-size: 2.5rem; }
+}
+
+.lead {
+color: var(--muted);
+font-size: 1rem;
+max-width: 55ch;
+}
+
+/* section heading */
+.h2 {
+font-size: 1.25rem;
+margin: 0 0 .5rem 0;
+font-weight: 600;
+}
+
+/* ---------------------------
+Buttons
+--------------------------- */
+.btn {
+display: inline-flex;
+align-items: center;
+gap: .5rem;
+padding: .5rem .9rem;
+border-radius: 8px;
+border: none;
+font-weight: 600;
+cursor: pointer;
+text-decoration: none;
+transition: transform .08s ease, box-shadow .08s ease;
+box-shadow: 0 1px 0 rgba(0,0,0,0.02);
+}
+.btn:active { transform: translateY(1px); }
+.btn:focus { outline: 2px solid rgba(37,99,235,0.15); outline-offset: 2px; }
+
+/* primary */
+.btn-primary {
+background: var(--brand);
+color: white;
+box-shadow: 0 6px 18px rgba(37,99,235,0.08);
+}
+.btn-primary:hover { background: var(--brand-600); }
+
+/* ghost / link-style */
+.btn-ghost {
+background: transparent;
+border: 1px solid rgba(16,24,40,0.06);
+color: var(--text);
+}
+
+/* destructive */
+.btn-danger {
+background: var(--danger);
+color: white;
+}
+
+/* ---------------------------
+Forms
+--------------------------- */
+label { display: block; font-weight: 600; margin-bottom: .25rem; font-size: .95rem; }
+.input,
+textarea,
+select {
+width: 100%;
+padding: .6rem .75rem;
+border-radius: 8px;
+border: 1px solid rgba(16,24,40,0.08);
+background: white;
+font-size: 1rem;
+color: var(--text);
+}
+.input:focus,
+textarea:focus,
+select:focus {
+outline: none;
+box-shadow: 0 0 0 4px rgba(37,99,235,0.08);
+border-color: var(--brand-600);
+}
+textarea { min-height: 120px; resize: vertical; }
+
+/* form row */
+.form-row { display: grid; gap: .75rem; }
+@media (min-width: 720px) {
+.form-row.cols-2 { grid-template-columns: 1fr 1fr; }
+}
+
+/* ---------------------------
+Lists, tables, code blocks
+--------------------------- */
+.table {
+width: 100%;
+border-collapse: collapse;
+background: var(--surface);
+border-radius: var(--radius);
+overflow: hidden;
+box-shadow: 0 6px 18px rgba(15,23,42,0.04);
+}
+.table th,
+.table td {
+padding: .75rem 1rem;
+border-bottom: 1px solid rgba(16,24,40,0.04);
+text-align: left;
+font-size: .95rem;
+}
+.table th { background: rgba(0,0,0,0.02); font-weight: 600; }
+
+/* code */
+code, pre {
+font-family: var(--mono);
+font-size: .875rem;
+background: rgba(15,23,42,0.03);
+padding: .15rem .4rem;
+border-radius: 6px;
+}
+pre {
+padding: 1rem;
+overflow: auto;
+}
+
+/* ---------------------------
+Utilities: colors, badges, alerts
+--------------------------- */
+.badge {
+display: inline-block;
+padding: .15rem .5rem;
+font-size: .8rem;
+border-radius: 999px;
+background: rgba(16,24,40,0.06);
+color: var(--muted);
+font-weight: 600;
+}
+
+/* alert */
+.alert {
+padding: .75rem 1rem;
+border-radius: 8px;
+display: flex;
+gap: .5rem;
+align-items: center;
+background: rgba(16,24,40,0.03);
+color: var(--text);
+}
+.alert.success { background: rgba(16,185,129,0.08); color: var(--accent); }
+.alert.warn { background: rgba(250,204,21,0.08); color: #92400e; }
+.alert.danger { background: rgba(239,68,68,0.08); color: var(--danger); }
+
+/* ---------------------------
+Accessibility & print
+--------------------------- */
+.sr-only {
+position: absolute !important;
+width: 1px; height: 1px;
+padding: 0; margin: -1px;
+overflow: hidden; clip: rect(0,0,0,0);
+white-space: nowrap; border: 0;
+}
+
+@media print {
+body { background: white; color: black; }
+.site-header, .site-footer, .mobile-toggle { display: none; }
+}
+
+/* ---------------------------
+Example page structure helpers (optional)
+--------------------------- /
+/ page wrapper */
+.page {
+min-height: 100vh;
+display: flex;
+flex-direction: column;
+}
+
+/* content area grows */
+.page-main {
+flex: 1 1 auto;
+}
+
+/* utility: card grid */
+.card-grid {
+display: grid;
+gap: 1rem;
+}
+@media (min-width: 720px) { .card-grid { grid-template-columns: repeat(2, 1fr); } }
+@media (min-width: 1100px) { .card-grid { grid-template-columns: repeat(3, 1fr); } }
+
+/* small responsive tweaks */
+@media (max-width: 480px) {
+.site-title { font-size: 1rem; }
+.hero h1 { font-size: 1.5rem; }
+}
