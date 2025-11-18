@@ -9,14 +9,14 @@ box-sizing: border-box;
 }
 
 :root{
-/* color palette /
---bg: #f7f7f8;
+/* color palette */
+--bg: #313131;
 --surface: #ffffff;
 --muted: #6b7280;
---text: #111827;
---brand: #2563eb; / blue /
+--text: #ffffff;
+--brand: #2563eb;
 --brand-600: #1e40af;
---accent: #10b981; / green */
+--accent: #10b981;
 --danger: #ef4444;
 
 /* spacing and sizes */
