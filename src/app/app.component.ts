@@ -1,9 +1,10 @@
 import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
+import { SearchListComponent } from './components/search-list.component';
 
 @Component({
   selector: 'app-root',
-  imports: [],
+  imports: [ SearchListComponent ],
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })

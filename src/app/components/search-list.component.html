@@ -1,0 +1,26 @@
+<div class="container">
+  <h1 class="title">Search for Events</h1>
+
+  <div class="search-bars">
+    <mat-form-field appearance="outline">
+      <mat-label>Location</mat-label>
+      <input matInput placeholder="Search by location..." [(ngModel)]="locationSearch" />
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Event Name</mat-label>
+      <input matInput placeholder="Search by event name..." [(ngModel)]="eventSearch" />
+    </mat-form-field>
+
+    <button mat-raised-button color="primary" (click)="onSearch()">Search</button>
+  </div>
+
+  <mat-list>
+    <mat-list-item *ngFor="let item of items" (click)="onItemClick(item)">
+      <img class="list-icon" matListItemAvatar [src]="item.icon" [alt]="item.name" />
+      <h3 matListItemTitle>{{item.name}}</h3>
+      <span matListItemLine>{{ item.venue }}</span>
+      <span matListItemLine>{{ item.location }} | {{ item.date }}</span>
+    </mat-list-item>
+  </mat-list>
+</div>

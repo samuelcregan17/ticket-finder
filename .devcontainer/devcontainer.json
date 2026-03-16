@@ -1,0 +1,17 @@
+{
+  "name": "Ticket Finder dev env",
+  "forwardPorts": [4200],
+  "build": {
+    "dockerfile": "Dockerfile",
+    "context": ".."
+  },
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "esbenp.prettier-vscode",
+        "mikeburgh.xml-format"
+        ]
+    }
+  },
+  "remoteUser": "node"
+}
