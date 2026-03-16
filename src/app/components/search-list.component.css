@@ -1,0 +1,15 @@
+mat-list-item {
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+mat-list-item:hover {
+  background-color: rgba(0, 0, 0, 0.05);
+}
+
+.container {
+    max-width: 800px;
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+}
